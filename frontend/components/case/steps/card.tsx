@@ -15,7 +15,7 @@ export function StepCard({ step }: StepCardProps) {
   const selectedOptions = step.options.filter(opt => opt.selected);
 
   return (
-    <div className="border rounded-lg p-4">
+    <div className="border rounded-lg p-4 transition-all duration-500 ease-in-out hover:border-blue-200 hover:shadow-sm">
       <StepHeader stepKey={step.key} question={step.question} />
       
       <div className="space-y-4">

@@ -57,7 +57,7 @@ export default function CasePage() {
   if (error) {
     return (
       <div className="p-8">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 transition-all duration-300 ease-in-out">
           {error}
         </div>
       </div>
@@ -82,14 +82,14 @@ export default function CasePage() {
   return (
     <div className="p-8">
       <StatusBar status={caseData.status} isMet={caseData.is_met} />
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto transition-all duration-500 ease-in-out">
         <CaseHeader caseData={caseData} />
         <StepsList steps={caseData.steps} />
       </div>
       {caseData.status !== "complete" && (
-        <div className="flex justify-center items-center p-4 border-t border-gray-200">
+        <div className="flex justify-center items-center p-4 border-t border-gray-200 transition-all duration-500 ease-in-out">
           <PulseLoader size={8} color="#3B82F6" margin={4} />
-          <span className="ml-3 text-sm text-gray-600">Processing medical records...</span>
+          <span className="ml-3 text-sm text-gray-600 transition-all duration-300">Processing medical records...</span>
         </div>
       )}
     </div>

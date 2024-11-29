@@ -6,8 +6,12 @@ authors = [
     { name = "Anterior", email = "your.email@example.com" }
 ]
 dependencies = [
-    "fastapi>=0.104.1",
-    "uvicorn>=0.24.0",
+    "fastapi>=0.109.0",
+    "uvicorn>=0.27.0",
+    "sqlmodel>=0.0.22",
+    "psycopg>=3.1.18",
+    "psycopg-binary>=3.1.18",
+    "pydantic-settings>=2.6.1",
     "python-multipart>=0.0.6",
     # For handling file uploads
     "aiofiles>=23.2.1",
@@ -15,6 +19,8 @@ dependencies = [
     "pytest>=8.3.3",
     "httpx>=0.28.0",
     "pydantic>=2.10.2",
+    "pdfplumber>=0.11.4",
+    "psycopg2>=2.9.10",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -29,8 +35,8 @@ managed = true
 dev-dependencies = []
 
 [tool.rye.scripts]
-server = "uvicorn src.backend.main:app --reload"
-test = "pytest tst"
+server = "uvicorn src.backend.app.main:app --reload"
+test = "pytest"
 
 [tool.hatch.metadata]
 allow-direct-references = true

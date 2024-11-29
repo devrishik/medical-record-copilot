@@ -13,7 +13,7 @@ interface FileUploadProps {
     disabledMessage?: string;
     isUploaded: boolean;
     onUpload: (file: { id: string, url: string, filename: string }) => void;
-    fileType: "medical-record" | "guidelines";
+    fileType: "medical_record" | "guidelines";
 }
 
 export default function FileUpload({
