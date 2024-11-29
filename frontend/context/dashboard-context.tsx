@@ -1,38 +1,43 @@
 "use client";
-import { createContext, useContext, useState, ReactNode } from "react";
 
-interface IUploadedFile {
-    url: string;
+import { createContext, useContext, useState } from "react";
+
+interface UploadedFile {
+	id: string;
+	url: string;
+	filename: string;
 }
 
-interface IDashboardContext {
-    medicalRecord: IUploadedFile | null;
-    setMedicalRecord: (file: IUploadedFile | null) => void;
-    guidelinesFile: IUploadedFile | null;
-    setGuidelinesFile: (file: IUploadedFile | null) => void;
+interface DashboardContextType {
+	medicalRecord: UploadedFile | null;
+	setMedicalRecord: (file: UploadedFile | null) => void;
+	guidelinesFile: UploadedFile | null;
+	setGuidelinesFile: (file: UploadedFile | null) => void;
 }
 
-const INITIAL_STATE: IDashboardContext = {
-    medicalRecord: null,
-    setMedicalRecord: () => {},
-    guidelinesFile: null,
-    setGuidelinesFile: () => {}
+const DashboardContext = createContext<DashboardContextType>({
+	medicalRecord: null,
+	setMedicalRecord: () => {},
+	guidelinesFile: null,
+	setGuidelinesFile: () => {},
+});
+
+export const DashboardProvider = ({ children }: { children: React.ReactNode }) => {
+	const [medicalRecord, setMedicalRecord] = useState<UploadedFile | null>(null);
+	const [guidelinesFile, setGuidelinesFile] = useState<UploadedFile | null>(null);
+
+	return (
+		<DashboardContext.Provider
+			value={{
+				medicalRecord,
+				setMedicalRecord,
+				guidelinesFile,
+				setGuidelinesFile,
+			}}
+		>
+			{children}
+		</DashboardContext.Provider>
+	);
 };
 
-export const DashboardContext = createContext(INITIAL_STATE);
-
-export function DashboardProvider({ children }: { children: ReactNode }) { 
-    const [medicalRecord, setMedicalRecord] = useState<IUploadedFile | null>(null);
-    const [guidelinesFile, setGuidelinesFile] = useState<IUploadedFile | null>(null);
-
-    const value = { medicalRecord, setMedicalRecord, guidelinesFile, setGuidelinesFile }; 
-
-    return (
-        <DashboardContext.Provider value={value}>{children}</DashboardContext.Provider>
-    );
-}
-
-export function useDashboard() { 
-    const context = useContext(DashboardContext);
-    return context;
-}
+export const useDashboard = () => useContext(DashboardContext);

@@ -3,15 +3,22 @@ name = "backend"
 version = "0.1.0"
 description = "Add your description here"
 authors = [
-    { name = "Dev Rishi Khare", email = "devrishik@gmail.com" }
+    { name = "Anterior", email = "your.email@example.com" }
 ]
 dependencies = [
-    "fastapi>=0.115.5",
+    "fastapi>=0.104.1",
+    "uvicorn>=0.24.0",
+    "python-multipart>=0.0.6",
+    # For handling file uploads
+    "aiofiles>=23.2.1",
+    # For async file operations
     "pytest>=8.3.3",
     "httpx>=0.28.0",
+    "pydantic>=2.10.2",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
+license = { text = "MIT" }
 
 [build-system]
 requires = ["hatchling"]
