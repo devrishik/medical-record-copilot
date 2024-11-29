@@ -11,7 +11,6 @@ interface StatusBarStepProps {
   step: (typeof steps)[number];
   index: number;
   currentStepIndex: number;
-  isFailureState: boolean;
   isSuccessState: boolean;
 }
 
@@ -33,7 +32,7 @@ function StepIcon({ step, isFailedStep, isCompleted }: { step: string; isFailedS
   return <span>{step}</span>;
 }
 
-function StatusBarStep({ step, index, currentStepIndex, isFailureState, isSuccessState }: StatusBarStepProps) {
+function StatusBarStep({ step, index, currentStepIndex, isSuccessState }: StatusBarStepProps) {
   const isFailedStep = step === 'failed';
   const isCompleted = index < currentStepIndex || (currentStepIndex === index && isSuccessState);
 
@@ -96,7 +95,6 @@ export function StatusBar({ status, isMet }: StatusBarProps) {
               step={step}
               index={steps.indexOf(step)}
               currentStepIndex={currentStepIndex}
-              isFailureState={isFailureState}
               isSuccessState={isSuccessState}
             />
             {index < visibleSteps.length - 1 && (
@@ -104,7 +102,7 @@ export function StatusBar({ status, isMet }: StatusBarProps) {
                 h-0.5 flex-1 mx-4
                 transition-all duration-500 ease-in-out
                 ${steps.indexOf(step) < currentStepIndex
-                  ? (isFailureState && step === 'complete')
+                  ? (isSuccessState && step === 'complete')
                     ? 'bg-red-500'
                     : 'bg-green-500'
                   : 'bg-gray-200'

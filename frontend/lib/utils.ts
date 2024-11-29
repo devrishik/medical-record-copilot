@@ -8,4 +8,4 @@ export function formatDate(dateString: string | undefined) {
   });
 }
 
-export const API_BASE_URL = 'http://localhost:8000';
+export const API_BASE_URL = `http://${process.env.NEXT_PUBLIC_API_URL || 'localhost:8000'}`;

@@ -21,7 +21,7 @@ A modern Next.js application for medical case management and file processing.
 
 1. Install Dependencies
    ```bash
-   npm install
+   npm i
    ```
 
 2. Start Development Server
