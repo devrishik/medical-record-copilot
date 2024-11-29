@@ -19,13 +19,21 @@ anyio==4.6.2.post1
 certifi==2024.8.30
     # via httpcore
     # via httpx
+cffi==1.17.1
+    # via cryptography
+charset-normalizer==3.4.0
+    # via pdfminer-six
 click==8.1.7
     # via uvicorn
 colorama==0.4.6
     # via click
     # via pytest
+cryptography==44.0.0
+    # via pdfminer-six
 fastapi==0.115.5
     # via backend
+greenlet==3.1.1
+    # via sqlalchemy
 h11==0.14.0
     # via httpcore
     # via uvicorn
@@ -40,23 +48,54 @@ iniconfig==2.0.0
     # via pytest
 packaging==24.2
     # via pytest
+pdfminer-six==20231228
+    # via pdfplumber
+pdfplumber==0.11.4
+    # via backend
+pillow==11.0.0
+    # via pdfplumber
 pluggy==1.5.0
     # via pytest
+psycopg==3.2.3
+    # via backend
+psycopg-binary==3.2.3
+    # via backend
+psycopg2==2.9.10
+    # via backend
+pycparser==2.22
+    # via cffi
 pydantic==2.10.2
+    # via backend
     # via fastapi
+    # via pydantic-settings
+    # via sqlmodel
 pydantic-core==2.27.1
     # via pydantic
+pydantic-settings==2.6.1
+    # via backend
+pypdfium2==4.30.0
+    # via pdfplumber
 pytest==8.3.3
     # via backend
+python-dotenv==1.0.1
+    # via pydantic-settings
 python-multipart==0.0.18
     # via backend
 sniffio==1.3.1
     # via anyio
+sqlalchemy==2.0.36
+    # via sqlmodel
+sqlmodel==0.0.22
+    # via backend
 starlette==0.41.3
     # via fastapi
 typing-extensions==4.12.2
     # via fastapi
+    # via psycopg
     # via pydantic
     # via pydantic-core
+    # via sqlalchemy
+tzdata==2024.2
+    # via psycopg
 uvicorn==0.32.1
     # via backend
